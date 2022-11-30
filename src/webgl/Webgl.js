@@ -3,14 +3,9 @@ import * as THREE from 'three';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import imagesLoaded from 'imagesloaded';
-import postvertex from './post_shader/vertex.glsl';
-import postfragment from './post_shader/fragment.glsl';
-import fragment from './shader/fragment.glsl';
-import vertex from './shader/vertex.glsl';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
-// let OrbitControls = require('three-orbit-controls')(THREE);
 
 const Webgl = () => {
   gsap.registerPlugin(ScrollTrigger);
@@ -645,7 +640,7 @@ const Webgl = () => {
       style() {
         this.DOM.main.style.position = 'fixed';
         this.DOM.main.style.width = this.DOM.main.style.height = '100%';
-        this.DOM.main.style.top = this.DOM.main.style.left = 0;
+        // this.DOM.main.style.top = this.DOM.main.style.left = 0;
         this.DOM.main.style.overflow = 'hidden';
       }
       initEvents() {
