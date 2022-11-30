@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import InsightSlider from './components/InsightSlider';
+import AppHeader from './components/Layouts/AppHeader';
 import Webgl from './webgl/Webgl';
 
 function App() {
@@ -8,9 +9,8 @@ function App() {
       <Webgl></Webgl>
       <main id='scrollArea'>
         <div data-scroll>
-          <header className='appheader'>
-            <img className='nav__logo' src='/logo.png' alt='logo' />
-          </header>
+          <AppHeader></AppHeader>
+
           <section className='hero'>
             <div className='hero__left'>
               <div className='hero__left_content'>
@@ -82,21 +82,25 @@ function App() {
             <div className='expertise__content'>
               <div className='expertise__content_left'>
                 <ul>
-                  <li>Agribusiness</li>
-                  <li>Banking and finance</li>
-                  <li>COMMERCIAL</li>
-                  <li>CONSTRUCTION AND PROJECTS</li>
-                  <li>SUPERANNUATION AND FUNDS</li>
-                  <li>CYBER, DATE AND IP</li>
-                  <li>Agribusiness</li>
-                  <li>PRIVATE GROUPS </li>
-                  <li>REGULATORY AND INVESTIGATIONS</li>
-                  <li>CONSTRUCTION AND PROJECTS</li>
-                  <li>SUPERANNUATION AND FUNDS</li>
-                  <li>CYBER, DATE AND IP</li>
-                  <li>Agribusiness</li>
-                  <li>PRIVATE GROUPS </li>
-                  <li>REGULATORY AND INVESTIGATIONS</li>
+                  <li aria-label='Agribusiness'>Agribusiness</li>
+                  <li aria-label='Agribusiness'>Banking and finance</li>
+                  <li aria-label='Agribusiness'>COMMERCIAL</li>
+                  <li aria-label='Agribusiness'>CONSTRUCTION AND PROJECTS</li>
+                  <li aria-label='Agribusiness'>SUPERANNUATION AND FUNDS</li>
+                  <li aria-label='Agribusiness'>CYBER, DATE AND IP</li>
+                  <li aria-label='Agribusiness'>Agribusiness</li>
+                  <li aria-label='Agribusiness'>PRIVATE GROUPS </li>
+                  <li aria-label='Agribusiness'>
+                    REGULATORY AND INVESTIGATIONS
+                  </li>
+                  <li aria-label='Agribusiness'>CONSTRUCTION AND PROJECTS</li>
+                  <li aria-label='Agribusiness'>SUPERANNUATION AND FUNDS</li>
+                  <li aria-label='Agribusiness'>CYBER, DATE AND IP</li>
+                  <li aria-label='Agribusiness'>Agribusiness</li>
+                  <li aria-label='Agribusiness'>PRIVATE GROUPS </li>
+                  <li aria-label='Agribusiness'>
+                    REGULATORY AND INVESTIGATIONS
+                  </li>
                 </ul>
               </div>
               <div className='expertise__content_right'>
