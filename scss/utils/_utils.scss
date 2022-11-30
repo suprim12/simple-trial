@@ -1,0 +1,163 @@
+@use '../layouts' as *;
+@use '../base' as *;
+@use 'sass:math' as math;
+
+.display-sm-none {
+  @include breakpoint-down(small) {
+    display: none;
+  }
+}
+
+.display-md-none {
+  @include breakpoint-down(medium) {
+    display: none;
+  }
+}
+
+.display-lg-none {
+  @media (min-width: map-get($breakPointsUp, 'large')),
+    (max-width: map-get($breakPointsDown, 'large')) {
+    display: none;
+  }
+}
+
+.display-xl-none {
+  @include breakpoint-down(xlarge) {
+    display: none;
+  }
+}
+
+.display {
+  &-xl-block {
+    @include breakpoint-down(xlarge) {
+      display: block;
+    }
+  }
+  &-lg-block {
+    @include breakpoint-down(large) {
+      display: block;
+    }
+  }
+  &-md-block {
+    @include breakpoint-down(medium) {
+      display: block;
+    }
+  }
+  &-sm-block {
+    @include breakpoint-down(small) {
+      display: block;
+    }
+  }
+}
+.display {
+  &-xl-flex {
+    @include breakpoint-down(xlarge) {
+      display: flex;
+    }
+  }
+  &-lg-flex {
+    @include breakpoint-down(large) {
+      display: flex;
+    }
+  }
+  &-md-flex {
+    @include breakpoint-down(medium) {
+      display: flex;
+    }
+  }
+  &-sm-flex {
+    @include breakpoint-down(small) {
+      display: flex;
+    }
+  }
+}
+.display {
+  &-xl-inline-flex {
+    @include breakpoint-down(xlarge) {
+      display: inline-flex;
+    }
+  }
+  &-lg-inline-flex {
+    @include breakpoint-down(large) {
+      display: inline-flex;
+    }
+  }
+  &-md-inline-flex {
+    @include breakpoint-down(medium) {
+      display: inline-flex;
+    }
+  }
+  &-sm-inline-flex {
+    @include breakpoint-down(small) {
+      display: inline-flex;
+    }
+  }
+}
+
+@for $i from 1 through 10 {
+  .line-clamp-#{$i} {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: #{$i};
+    -webkit-box-orient: vertical;
+  }
+  .mt-#{$i} {
+    margin-top: #{math.div($i, 2)}rem;
+  }
+  .mb-#{$i} {
+    margin-bottom: #{math.div($i, 2)}rem;
+  }
+  .mr-#{$i} {
+    margin-right: #{math.div($i, 2)}rem;
+  }
+  .ml-#{$i} {
+    margin-left: #{math.div($i, 2)}rem;
+  }
+  .mx-#{$i} {
+    margin-top: #{math.div($i, 2)}rem;
+    margin-bottom: #{math.div($i, 2)}rem;
+  }
+  .my-#{$i} {
+    margin-left: #{math.div($i, 2)}rem;
+    margin-right: #{math.div($i, 2)}rem;
+  }
+  .pt-#{$i} {
+    padding-top: #{math.div($i, 2)}rem;
+  }
+  .pb-#{$i} {
+    padding-bottom: #{math.div($i, 2)}rem;
+  }
+}
+
+.mx-auto {
+  margin-right: auto;
+  margin-left: auto;
+}
+.mr-auto {
+  margin-right: auto;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+.d-block {
+  display: block;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+// Utils for text color
+@each $color, $arrs in $colors {
+  @each $key, $val in $arrs {
+    @if $key == 'default' {
+      $key: '';
+    } @else {
+      $key: '-' + $key;
+    }
+    .text-#{$color}#{$key} {
+      color: #{$val};
+    }
+  }
+}

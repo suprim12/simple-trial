@@ -1,0 +1,129 @@
+@use 'sass:math' as math;
+// Remove the unit of a length
+$base-font-size: 16px;
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return math.div($number, $number * 0 + 1);
+  }
+
+  @return $number;
+}
+// Convert to rem
+@function to-rem($value, $base: null) {
+  // Check if the value is a number
+  @if type-of($value) != 'number' {
+    @warn inspect($value) + ' was passed to rem-calc(), which is not a number.';
+    @return $value;
+  }
+
+  // Transform em into rem if someone hands over 'em's
+  @if unit($value) == 'em' {
+    $value: strip-unit($value) * 1rem;
+  }
+
+  // Calculate rem if units for $value is not rem or em
+  @if unit($value) != 'rem' {
+    $value: math.div(strip-unit($value), strip-unit($base));
+  }
+
+  // Turn 0rem into 0
+  @if $value == 0rem {
+    $value: 0;
+  }
+
+  @return $value;
+}
+@function rem-calc($values, $base: null) {
+  $rem-values: ();
+  $count: length($values);
+
+  // If no base is defined, defer to the global font size
+  @if $base == null {
+    $base: $base-font-size;
+  }
+
+  // If the base font size is a %, then multiply it by 16px
+  // This is because 100% font size = 16px in most all browsers
+  @if unit($base) == '%' {
+    $base: (math.div($base, 100%)) * 16px;
+  }
+
+  // Using rem as base allows correct scaling
+  @if unit($base) == 'rem' {
+    $base: strip-unit($base) * 16px;
+  }
+
+  @if $count == 1 {
+    @return to-rem($values, $base);
+  }
+
+  @for $i from 1 through $count {
+    $rem-values: append($rem-values, to-rem(nth($values, $i), $base));
+  }
+
+  @return $rem-values;
+}
+
+// Transistion
+@mixin transistion-ease {
+  transition: all 0.5s ease-in-out;
+}
+
+@function set-text-color($color) {
+  @if (lightness($color) >40%) {
+    @return #000;
+  } @else {
+    @return #fff;
+  }
+}
+
+// Responsive Typography
+@mixin fluid-type(
+  $min-font-size: 12px,
+  $max-font-size: 21px,
+  $lower-range: 420px,
+  $upper-range: 900px
+) {
+  font-size: calc(
+    #{$min-font-size} + #{(
+        math.div($max-font-size, $max-font-size * 0 + 1) -
+          math.div($min-font-size, $min-font-size * 0 + 1)
+      )} * ((100vw - #{$lower-range}) / #{(
+            math.div($upper-range, $upper-range * 0 + 1) -
+              math.div($lower-range, $lower-range * 0 + 1)
+          )})
+  );
+
+  @media screen and (max-width: $lower-range) {
+    font-size: $min-font-size;
+  }
+  @media screen and (min-width: $upper-range) {
+    font-size: $max-font-size;
+  }
+}
+
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+@mixin typo-fluid($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}

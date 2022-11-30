@@ -1,0 +1,101 @@
+@use './breakpoints' as *;
+@use 'sass:math' as math;
+
+$columns: 12;
+$gutter: 0.9375rem;
+
+.wrapper {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $gutter;
+}
+.wrapper-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$gutter;
+  margin-left: -$gutter;
+
+  @for $i from 1 through 10 {
+    &.gx-#{$i} {
+      margin-right: -#{math.div($i, 2)}rem;
+      margin-left: -#{math.div($i, 2)}rem;
+
+      [class*='wrap-'] {
+        padding-right: #{math.div($i, 2)}rem;
+        padding-left: #{math.div($i, 2)}rem;
+      }
+    }
+  }
+
+  &.no-gutter {
+    margin-right: 0rem;
+    margin-left: 0rem;
+    [class*='wrap-'] {
+      padding-right: 0rem;
+      padding-left: 0rem;
+    }
+  }
+}
+.wrap {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+[class*='wrap-'] {
+  position: relative;
+  width: 100%;
+  flex-basis: 100%;
+  padding-right: $gutter;
+  padding-left: $gutter;
+}
+
+@for $i from 1 through $columns {
+  .wrap-#{$i} {
+    flex: 0 0 calc(#{math.div($i, $columns) * 100 + '%'});
+    max-width: calc(#{math.div($i, $columns) * 100 + '%'});
+  }
+  .wrap-offset-#{$i} {
+    margin-left: calc(#{math.div($i, $columns) * 100 + '%'});
+  }
+}
+
+@include breakpoint-up(small) {
+  @for $i from 1 through $columns {
+    .wrap-sm-#{$i} {
+      flex: 0 0 calc(#{math.div($i, $columns) * 100 + '%'});
+      max-width: calc(#{math.div($i, $columns) * 100 + '%'});
+    }
+  }
+}
+
+@include breakpoint-up(medium) {
+  @for $i from 1 through $columns {
+    .wrap-md-#{$i} {
+      flex: 0 0 calc(#{math.div($i, $columns) * 100 + '%'});
+      max-width: calc(#{math.div($i, $columns) * 100 + '%'});
+    }
+  }
+}
+
+@include breakpoint-up(large) {
+  @for $i from 1 through $columns {
+    .wrap-lg-#{$i} {
+      flex: 0 0 calc(#{math.div($i, $columns) * 100 + '%'});
+      max-width: calc(#{math.div($i, $columns) * 100 + '%'});
+    }
+  }
+}
+
+@include breakpoint-up(xlarge) {
+  @for $i from 1 through $columns {
+    .wrap-xl-#{$i} {
+      flex: 0 0 calc(#{math.div($i, $columns) * 100 + '%'});
+      max-width: calc(#{math.div($i, $columns) * 100 + '%'});
+    }
+  }
+}

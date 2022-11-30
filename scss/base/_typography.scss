@@ -1,0 +1,49 @@
+@use '../mixins' as *;
+
+$min_width: 320px;
+$max_width: 1200px;
+
+$min_p_font: 14px;
+$max_p_font: 16px;
+
+$min_h1_font: 30px;
+$max_h1_font: 75px;
+
+$min_h2_font: 30px;
+$max_h2_font: 50px;
+
+$min_h3_font: 18px;
+$max_h3_font: 30px;
+
+$min_h4_font: 16px;
+$max_h4_font: 20px;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+h1 {
+  @include typo-fluid($min_width, $max_width, $min_h1_font, $max_h1_font);
+  line-height: 1;
+}
+h2 {
+  @include typo-fluid($min_width, $max_width, $min_h2_font, $max_h2_font);
+  line-height: 1;
+}
+h3 {
+  @include typo-fluid($min_width, $max_width, $min_h3_font, $max_h3_font);
+  line-height: 1;
+}
+
+h4 {
+  @include typo-fluid($min_width, $max_width, $min_h4_font, $max_h4_font);
+  line-height: 1;
+}
+p {
+  @include typo-fluid($min_width, $max_width, $min_p_font, $max_p_font);
+}

@@ -1,0 +1,86 @@
+$colors: (
+  primary: (
+    default: rgb(0, 112, 243),
+    light: rgb(10, 120, 245),
+    dark: rgb(0, 96, 206),
+  ),
+  success: (
+    default: #0ba,
+    light: #0ba,
+    dark: rgb(0, 165, 151),
+  ),
+  error: (
+    default: #ff1a1a,
+    light: #ff1a1a,
+    dark: #ce0101,
+  ),
+  warning: (
+    default: #f5a623,
+    light: #f5a623,
+    dark: #f5a523e3,
+  ),
+  secondary: (
+    default: #000,
+    light: #111,
+    dark: #111,
+  ),
+  border: (
+    default: #efefef,
+    light: #efefef,
+    dark: #efefef,
+  ),
+  accent: (
+    1: #fafafa,
+    2: #eaeaea,
+    3: #999,
+    4: #888,
+    5: #666,
+    6: #444,
+    7: #333,
+    8: #111,
+  ),
+  text: (
+    default: #000,
+    sub: #ccc,
+  ),
+);
+
+$fonts: (
+  size: (
+    small: 0.25rem,
+    medium: 0.875rem,
+    large: 1rem,
+  ),
+  family: (
+    default: 'Poppins' ', Arial, Helvetica, sans-serif',
+    secondary: 'Poppins',
+    fallback: ' Arial, Helvetica, sans-serif',
+  ),
+);
+
+:root {
+  // COLORS
+  @each $color, $arrs in $colors {
+    @each $key, $val in $arrs {
+      @if $key == 'default' {
+        $key: '';
+      } @else {
+        $key: '-' + $key;
+      }
+      --c-#{$color}#{$key}: #{$val};
+    }
+  }
+  // --- END COLORS ---
+  // FONTS
+  @each $font, $arrs in $fonts {
+    @each $key, $val in $arrs {
+      @if $key == 'default' {
+        $key: '';
+      } @else {
+        $key: '-' + $key;
+      }
+      --f-#{$font}#{$key}: #{$val};
+    }
+  }
+  // --- END FONTS ---
+}

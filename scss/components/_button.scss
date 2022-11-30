@@ -1,0 +1,140 @@
+.btn {
+  font-weight: 600;
+  color: #111;
+  height: 40px;
+  font-size: 0.875rem;
+  border-radius: 5px;
+  padding: 0.5rem 1.875rem;
+  transition: background-color 0.2s ease-in-out;
+  background-color: transparent;
+  border: 1px solid var(--c-accent-2);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--c-accent-1);
+  }
+
+  &-text {
+    border: none;
+    padding: 0.5rem;
+  }
+  &-link {
+    border: none;
+    height: auto;
+    padding: 0rem;
+    &:hover {
+      background-color: transparent;
+      color: var(--c-primary);
+    }
+  }
+  &-primary {
+    color: #fff;
+    background-color: var(--c-primary);
+    border: 1px solid var(--c-primary);
+    &:hover {
+      background-color: var(--c-primary-dark);
+    }
+    &.btn-outline {
+      background-color: transparent;
+      color: var(--c-primary);
+      &:hover {
+        background-color: var(--c-primary);
+        color: #fff;
+      }
+    }
+  }
+  &-error {
+    color: #fff;
+    background-color: var(--c-error);
+    border: 1px solid var(--c-error);
+    &:hover {
+      background-color: var(--c-error-dark);
+    }
+    &.btn-outline {
+      background-color: transparent;
+      color: var(--c-error);
+      &:hover {
+        background-color: var(--c-error);
+        color: #fff;
+      }
+    }
+  }
+  &-warning {
+    color: #fff;
+    background-color: var(--c-warning);
+    border: 1px solid var(--c-warning);
+    &:hover {
+      background-color: var(--c-warning-dark);
+    }
+    &.btn-outline {
+      background-color: transparent;
+      color: var(--c-warning);
+      &:hover {
+        background-color: var(--c-warning);
+        color: #fff;
+      }
+    }
+  }
+  &-success {
+    color: #fff;
+    background-color: var(--c-success);
+    border: 1px solid var(--c-success);
+    &:hover {
+      background-color: var(--c-success-dark);
+    }
+    &.btn-outline {
+      background-color: transparent;
+      color: var(--c-success);
+      &:hover {
+        background-color: var(--c-success);
+        color: #fff;
+      }
+    }
+  }
+  &-secondary {
+    color: #fff;
+    background-color: var(--c-secondary);
+    border: 1px solid var(--c-secondary);
+    &:hover {
+      background-color: var(--c-secondary-dark);
+    }
+    &.btn-outline {
+      background-color: transparent;
+      color: var(--c-secondary);
+      &:hover {
+        background-color: var(--c-secondary);
+        color: #fff;
+      }
+    }
+  }
+  &-size {
+    &-sm {
+      height: 30px;
+      padding: 0.4rem;
+      font-size: 0.7rem;
+    }
+    &-md {
+      height: 40px;
+      padding: 0.5rem 0.875rem;
+      font-size: 0.875rem;
+    }
+    &-lg {
+      height: 45px;
+      padding: 0.5rem 1.5rem;
+      font-size: 0.875rem;
+    }
+    &-xl {
+      height: 50px;
+      padding: 0.5rem 2rem;
+      font-size: 0.875rem;
+    }
+    &-auto {
+      width: auto;
+      padding: 0.5rem;
+    }
+    &-fluid {
+      display: block;
+      width: 100%;
+    }
+  }
+}

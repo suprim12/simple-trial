@@ -1,0 +1,18 @@
+@use './variables' as *;
+
+html {
+  font-size: 16px;
+}
+body {
+  font-family: var(--f-family);
+  font-size: 1rem;
+}
+
+ul {
+  margin: 0rem;
+  padding: 0rem;
+}
+
+a {
+  text-decoration: none;
+}
